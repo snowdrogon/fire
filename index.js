@@ -260,7 +260,7 @@ function loop() {
     
     //手机触屏事件(touch)
     if(limiterTick >= limiterTotal){
-        canvas.addEventListener('touchmove', function(event) {
+        canvas.addEventListener('touchend', function( e ) {
             fireworks.push( new Firework( cw / 2, ch, mx, my ) );
             limiterTick = 0;
         });
