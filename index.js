@@ -251,7 +251,9 @@ function loop() {
 
     // limit the rate at which fireworks get launched when mouse is down
     if( limiterTick >= limiterTotal ) {
-        if( mousedown ||  obj.onClick() ) {
+        if( mousedown ||  obj.onClick(function(){
+            return true;
+        }) ) {
             // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
             fireworks.push( new Firework( cw / 2, ch, mx, my ) );
             limiterTick = 0;
