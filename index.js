@@ -231,8 +231,6 @@ function loop() {
         particles[ i ].update( i );
     }
     
-    //手机触屏事件(touch)
-    var obj = document.getElementById('canvas');
 
     // launch fireworks automatically to random coordinates, when the mouse isn't down
     if( timerTick >= timerTotal ) {
@@ -257,6 +255,22 @@ function loop() {
             limiterTick = 0;
         }
     } else {
+        limiterTick++;
+    }
+    
+    //手机触屏事件(touch)
+    if(limiterTick >= limiterTotal){
+        ctx.addEventListener('touchmove', function(event) {
+        // 如果这个元素的位置内只有一个手指的话
+            if (event.targetTouches.length == 1) {
+                event.preventDefault();// 阻止浏览器默认事件，重要
+                var touch = event.targetTouches[0];
+                // 把元素放在手指所在的位置
+                obj.style.left = touch.pageX-50 + 'px';
+                obj.style.top = touch.pageY-50 + 'px';
+            }
+        }, false);
+    }else{
         limiterTick++;
     }
 }
