@@ -230,6 +230,9 @@ function loop() {
         particles[ i ].draw();
         particles[ i ].update( i );
     }
+    
+    //手机触屏事件(touch)
+    var obj = document.getElementById('canvas');
 
     // launch fireworks automatically to random coordinates, when the mouse isn't down
     if( timerTick >= timerTotal ) {
@@ -248,7 +251,7 @@ function loop() {
 
     // limit the rate at which fireworks get launched when mouse is down
     if( limiterTick >= limiterTotal ) {
-        if( mousedown || onDocumentTouchMove ) {
+        if( mousedown ||  obj.onClick() ) {
             // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
             fireworks.push( new Firework( cw / 2, ch, mx, my ) );
             limiterTick = 0;
