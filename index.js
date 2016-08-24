@@ -260,7 +260,7 @@ function loop() {
     
     //手机触屏事件(touch)
     if(limiterTick >= limiterTotal){
-        ctx.addEventListener('touchmove', function(event) {
+        canvas.addEventListener('touchmove', function(event) {
         // 如果这个元素的位置内只有一个手指的话
             if (event.targetTouches.length == 1) {
                 event.preventDefault();// 阻止浏览器默认事件，重要
